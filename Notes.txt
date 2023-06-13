@@ -1,0 +1,7 @@
+npm i (for all packages installation)
+npm start (for running app)
+
+To run frontend and backend both ata a time explore "concurrently" package ---> npm i concurrently
+npm i react-router-dom
+
+npm i react-type-animation
