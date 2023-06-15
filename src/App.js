@@ -5,36 +5,36 @@ import VerifyMail from "./pages/VerifyMail";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NavBar from "./components/common/NavBar";
-import OpenRoute from "./components/core/Auth/OpenRoute"
+import OpenRoute from "./components/core/Auth/OpenRoute";
 
 function App() {
   return (
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
-      {/* <NavBar /> */}
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
           path="/login"
           element={
-            // <OpenRoute>
+            <OpenRoute>
               <Login />
-            // </OpenRoute>
+            </OpenRoute>
           }
         />
         <Route
           path="/signup"
           element={
-            // <OpenRoute>
+            <OpenRoute>
               <Signup />
-            // </OpenRoute>
+            </OpenRoute>
           }
         />
         <Route
           path="/verify-email"
           element={
-            // <OpenRoute>
-              <VerifyMail/>
-            // </OpenRoute>
+            <OpenRoute>
+              <VerifyMail />
+            </OpenRoute>
           }
         />
       </Routes>

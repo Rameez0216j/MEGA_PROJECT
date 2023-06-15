@@ -14,27 +14,19 @@ require("dotenv").config();
 exports.sendotp = async(req,res) =>{
     try{
         // fetch email from request body
-        // console.log("Stop1");
         const{email} = req.body;
 
         // check if user already exists
         const checkUserExist=await User.findOne({email});
-        // console.log("Stop1");
+
         // if user already exists
         if(checkUserExist){
-
-            // if you set status code 200 then no error will occur for user already exist
-            // return res.status(200).json({
-            //     success:false,
-            //     message:"User already registered"
-            // })
-
             return res.status(401).json({
                 success:false,
                 message:"User already registered"
             })
         }
-        // console.log("Stop1");
+
         // No user exists with the provided mail 
         // Now Generate OTP
         var otp=otpGenerator.generate(6,{
@@ -42,7 +34,6 @@ exports.sendotp = async(req,res) =>{
             lowerCaseAlphabets:false,
             specialChars:false
         })
-        // console.log("Generated OTP :",otp);
 
 
         // check if otp is Unique in DB
@@ -56,6 +47,8 @@ exports.sendotp = async(req,res) =>{
             })
             result=await OTP.findOne({otp:otp});
         }
+
+        console.log("Generated OTP :",otp);
 
         const otpPayload = {email,otp};
         // create an entry for OTP in DB;

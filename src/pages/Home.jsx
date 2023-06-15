@@ -48,7 +48,7 @@ const Home = () => {
                     </CTAButton>
                 </dir>
 
-                <div className="mx-12 my-12 shadow-[15px_15px_0px_0px_rgb(225,225,225,1)]">
+                <div className="mx-12 my-12 w-11/12 shadow-[15px_15px_0px_0px_rgb(225,225,225,1)]">
                     <video muted loop autoPlay >
                         <source src={Banner} type="video/mp4" />
                     </video>

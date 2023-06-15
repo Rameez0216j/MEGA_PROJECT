@@ -8,7 +8,7 @@ import { sendOtp } from "../../../services/operations/authAPI";
 import { setSignupData } from "../../../slices/authSlice";
 import { ACCOUNT_TYPE } from "../../../utils/constants";
 
-const SignupForm = ({ setIsLoggedIn }) => {
+const SignupForm = ({ setIsLoggedIn })=>{
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -34,7 +34,7 @@ const SignupForm = ({ setIsLoggedIn }) => {
     }));
   }
 
-  function submitHandler(event) {
+  function submitHandler(event){
     event.preventDefault(); // to prevent page loading on submission
     if (password !== confirmPassword) {
       toast.error("Password do not match");
@@ -45,17 +45,8 @@ const SignupForm = ({ setIsLoggedIn }) => {
       ...formData,
       accountType,
     };
-
-    // console.log("***************************************************");
-    // console.log(accountData);
-    // console.log("***************************************************");
     // set signup data to be used after sign up
     dispatch(setSignupData(accountData));
-
-    console.log("***************************************************");
-    console.log(signupData);
-    console.log("***************************************************");
-    // console.log("Fine Upto Here")
     dispatch(sendOtp(formData.email, navigate));
 
     // Reset Data
