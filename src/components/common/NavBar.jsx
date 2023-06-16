@@ -97,11 +97,11 @@ const NavBar = () => {
                 ) : (
                   <Link to={link?.path}>
                     <p
-                    // className={`${
-                    //   matchRoute(link?.path)
-                    //     ? "text-yellow-25"
-                    //     : "text-richblack-25"
-                    // }`}
+                    className={`${
+                      matchRoute(link?.path)
+                        ? "text-yellow-50"
+                        : "text-richblack-25"
+                    }`}
                     >
                       {link.title}
                     </p>
@@ -122,14 +122,14 @@ const NavBar = () => {
           )}
           {token === null && (
             <Link to="/login">
-              <button className="border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100 rounded-md font-semibold transition-all duration-100 hover:text-richblack-900 hover:bg-yellow-25">
+              <button className="border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100 rounded-md font-semibold transition-all duration-100 hover:text-richblack-900 hover:bg-yellow-50">
                 Log in
               </button>
             </Link>
           )}
           {token === null && (
             <Link to="/signup">
-              <button className="border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100 rounded-md font-semibold transition-all duration-100 hover:text-richblack-900 hover:bg-yellow-25">
+              <button className="border border-richblack-700 bg-richblack-800 px-[12px] py-[8px] text-richblack-100 rounded-md font-semibold transition-all duration-100 hover:text-richblack-900 hover:bg-yellow-50">
                 Sign Up
               </button>
             </Link>

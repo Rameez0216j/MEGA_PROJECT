@@ -69,9 +69,9 @@ const LoginForm = ({ setIsLoggedIn }) => {
                     )}
                 </span>
 
-                <Link to="#">
+                <Link to="/forgot-password">
                     {/* ml-auto sets all the content to right */}
-                <p className='text-xs mt-1 text-blue-100 max-w-max ml-auto'>
+                <p className='text-xs mt-3 text-blue-100 max-w-max ml-auto'>
                     Forgot Password
                 </p>
                 </Link>

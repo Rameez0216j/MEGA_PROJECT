@@ -4,6 +4,7 @@ const bcrypt=require("bcrypt");
 const crypto = require("crypto");
 require("dotenv").config();
 const PORT=process.env.PORT;
+const FRONTEND_PORT=process.env.FRONTEND_PORT;
 
 // resetPasswordToken
 exports.resetPasswordToken = async(req,res) =>{
@@ -36,7 +37,7 @@ exports.resetPasswordToken = async(req,res) =>{
         console.log("DETAILS", updatedDetails);
 
         // create url for frontEnd password reset
-        const url =`http://localhost:${PORT}/update-password/${token}`
+        const url =`http://localhost:${FRONTEND_PORT}/update-password/${token}`
         // send mail containing the url
         await mailSender(email,
             "Password reset link",
@@ -84,7 +85,7 @@ exports.resetPassword = async(req,res)=>{
         }
 
         // token time checking (if expired or not)
-        if(userDetails.resetPasswordExpires > Date.now()){
+        if(userDetails.resetPasswordExpires < Date.now()){
             return res.status(403).json({
                 success:false,
                 message:"Token is expired, please regenerate your token"

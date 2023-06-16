@@ -6,6 +6,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import NavBar from "./components/common/NavBar";
 import OpenRoute from "./components/core/Auth/OpenRoute";
+import ForgotPassword from "./pages/ForgotPassword";
+import UpdatePassword from "./pages/UpdatePassword";
 
 function App() {
   return (
@@ -35,6 +37,22 @@ function App() {
             <OpenRoute>
               <VerifyMail />
             </OpenRoute>
+          }
+        />
+        <Route
+          path="forgot-password"
+          element={
+            <OpenRoute>
+              <ForgotPassword />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="update-password/:id"
+          element={
+            // <OpenRoute>
+              <UpdatePassword />
+            // </OpenRoute>
           }
         />
       </Routes>
