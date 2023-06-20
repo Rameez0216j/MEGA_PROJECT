@@ -5,6 +5,7 @@ const userRoutes =require("./routes/User");
 const courseRoutes =require("./routes/Course");
 const paymentRoutes =require("./routes/Payments");
 const profileRoutes =require("./routes/Profile");
+const contactUsRoute = require("./routes/Contact");
 
 
 // connecting Database
@@ -53,6 +54,7 @@ app.use("/api/v1/auth",userRoutes);
 app.use("/api/v1/profile",profileRoutes);
 app.use("/api/v1/course",courseRoutes);
 app.use("/api/v1/payment",paymentRoutes);
+app.use("/api/v1/reach", contactUsRoute);
 
 // default route
 app.get("/", (req,res)=>{
