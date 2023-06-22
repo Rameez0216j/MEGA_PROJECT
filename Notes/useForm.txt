@@ -1,0 +1,30 @@
+In the provided code, the data object is derived from the form input fields and is passed as an argument to the submitPasswordForm function when the form is submitted.
+
+Specifically, the data object is obtained using the handleSubmit function from the react-hook-form library. The handleSubmit function collects the form data and passes it to the provided callback function (submitPasswordForm in this case) when the form is submitted.
+
+Here's the relevant part of the code where data is obtained:
+
+
+CODE :
+const {
+    register,
+    handleSubmit,
+    formState: { errors },
+} = useForm();
+
+const submitPasswordForm = async (data) => {
+    const formData = { ...data, confirmNewPassword: data.newPassword };
+    console.log("password Data - ", formData);
+    // Rest of the code...
+};
+
+// Inside the form tag
+<form onSubmit={handleSubmit(submitPasswordForm)}>
+    {/* Form fields */}
+</form>
+
+
+
+When the form is submitted, handleSubmit(submitPasswordForm) is called, and it triggers the submitPasswordForm function with the data object as its argument. The data object contains the values of the form fields, which are accessed using the register function from react-hook-form.
+
+In the submitPasswordForm function, the data object is logged to the console and then used further in the code for processing and sending a request to change the password.

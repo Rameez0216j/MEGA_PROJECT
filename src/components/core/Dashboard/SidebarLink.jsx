@@ -30,8 +30,8 @@ const SidebarLink = ({ link, iconName }) => {
         }`}
       ></span>
       <div className="flex items-center gap-x-3">
-        <Icon className="text-lg"/>
-        <span>{link.name}</span>
+        <Icon className="text-lg text-richblack-200"/>
+        <span className="text-richblack-300">{link.name}</span>
       </div>
     </NavLink>
   );

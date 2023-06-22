@@ -106,7 +106,7 @@ const About = () => {
       <StatsComponent />
       <section className="mx-auto mt-20 flex w-11/12 max-w-maxContent flex-col justify-between gap-10 items-center text-white">
         <LearningGrid />
-        <div className="max-w-[500px]">
+        <div className="max-w-[600px] border p-10 rounded-md border-richblack-700">
         <ContactFormSection />
         </div>
       </section>

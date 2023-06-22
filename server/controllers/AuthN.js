@@ -177,8 +177,6 @@ exports.signup = async (req,res)=>{
 
 
 
-
-
 // Login
 exports.login = async(req,res)=>{
     try{
@@ -247,8 +245,6 @@ exports.login = async(req,res)=>{
         })
     }
 }
-
-
 
 
 
