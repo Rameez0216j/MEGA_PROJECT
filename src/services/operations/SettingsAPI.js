@@ -56,22 +56,27 @@ export function updateProfile(token, formData) {
                 }
             );
             
-            console.log(response)
+            console.log( "Response :",response)
+
             if (!response.data.success) {
                 throw new Error(response.data.message);
             }
             
-            console.log(response.data.profile);
-            const userImage = response.data.profile.image
-                ? response.data.profile.image
-                : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.profile.firstName} ${response.data.profile.lastName}`;
+            // console.log(response.data.profile);
+            const userImage = response?.data?.updatedUserDetails?.image
+                ? response?.data?.updatedUserDetails?.image
+                : `https://api.dicebear.com/5.x/initials/svg?seed=${response?.data?.updatedUserDetails?.firstName} ${response?.data?.updatedUserDetails?.lastName}`;
+
+            const newUserDetails={
+                ...response?.data?.updatedUserDetails,
+                image:userImage
+            }
 
             dispatch(
-                setUser({
-                    additionalDetails:{...response.data.profile},
-                    image: userImage,
-                })
+                setUser(newUserDetails)
             );
+
+            localStorage.setItem("user",newUserDetails)
 
             
             toast.success("Profile Updated Successfully");

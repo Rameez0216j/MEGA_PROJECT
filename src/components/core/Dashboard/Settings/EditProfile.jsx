@@ -22,9 +22,9 @@ const EditProfile = () => {
     const submitProfileForm = async (data) => {
         try {
 			
-			console.log("user before update",user);
+			// console.log("user before update",user);
             dispatch(updateProfile(token, data));
-			console.log("user after update",user);
+			// console.log("user after update",user);
         } catch (error) {
             console.log("Error Message - ", error.message);
         }
@@ -101,7 +101,7 @@ const EditProfile = () => {
                                 type="date"
                                 name="dateOfBirth"
                                 id="dateOfBirth"
-                                className="form-style"
+                                className="form-style calander"
                                 {...register("dateOfBirth", {
                                     required: {
                                         value: true,
