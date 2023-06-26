@@ -17,6 +17,9 @@ exports.auth = async(req,res,next)=>{
             })
         }
 
+        // console.log("Token received in auth Middleware",token)
+
+
         // Verify the token
         try{
             const decode=jwt.verify(token, process.env.JWT_SECRET);
@@ -26,7 +29,7 @@ exports.auth = async(req,res,next)=>{
             // Verification- issue
             return res.status(401).json({
                 success:true,
-                message:"Token is Invalid"
+                message:"Token is Invalid (in auth middleware)"
             })
         }
         next();

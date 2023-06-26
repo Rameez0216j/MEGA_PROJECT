@@ -210,6 +210,7 @@ exports.login = async(req,res)=>{
             }
 
             const token= jwt.sign(payload,process.env.JWT_SECRET,{
+                // token is expiring in 2 hours and you need to login for every 2 hours (Read more about this)
                 expiresIn:"2h"
             });
             

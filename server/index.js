@@ -58,7 +58,7 @@ app.use("/api/v1/reach", contactUsRoute);
 
 // default route
 app.get("/", (req,res)=>{
-    return req.status(404).json({
+    return res.status(404).json({
         success:true,
         message:"Your server is Up and Running..."
     })

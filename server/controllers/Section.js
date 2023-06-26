@@ -1,6 +1,7 @@
 const Section = require("../models/Section");
 const Course = require("../models/Course");
 const mongoose=require("mongoose");
+const SubSection = require("../models/SubSection");
 
 exports.createSection = async (req, res) => {
     try {
@@ -55,7 +56,7 @@ exports.createSection = async (req, res) => {
 exports.updateSection = async (req, res) => {
     try {
         // fetch data from req.body
-        const { sectionName, sectionId } = req.body;
+        const { sectionName, sectionId, courseId } = req.body;
 
         // data validation
         if (!sectionName || !sectionId) {
@@ -72,10 +73,19 @@ exports.updateSection = async (req, res) => {
             { new: true }
         );
 
+        const course = await Course.findById(courseId)
+		.populate({
+			path:"courseContent",
+			populate:{
+				path:"subSections",
+			},
+		})
+
         // return response
         return res.status(200).json({
             success: true,
-            message:section
+            message:section,
+            data:course
         });
     } catch (error) {
         return res.status(500).json({
@@ -87,29 +97,50 @@ exports.updateSection = async (req, res) => {
 };
 
 // deleting section
+// DELETE a section
 exports.deleteSection = async (req, res) => {
-    try {
-        // get ID - assuming that we are sending ID in params
-        const { sectionId } = req.body;
+	try {
 
-        // deleting the section from DB
-        console.log(sectionId);
-        const delSection=new mongoose.Types.ObjectId(sectionId);
-        await Section.findByIdAndDelete( delSection );
+		const { sectionId, courseId }  = req.body;
+		await Course.findByIdAndUpdate(courseId, {
+			$pull: {
+				courseContent: sectionId,
+			}
+		})
+		const section = await Section.findById(sectionId);
+		console.log(sectionId, courseId);
+		if(!section) {
+			return res.status(404).json({
+				success:false,
+				message:"Section not Found",
+			})
+		}
 
-        //TODO[Testing]: do we need to delete the entry from the course schema ?? Ans is Yes (H/W)
+		//delete sub section
+		await SubSection.deleteMany({_id: {$in: section.subSections}});
 
+        // deleting Section
+		await Section.findByIdAndDelete(sectionId);
 
-        // returning response
-        return res.status(200).json({
-            success: true,
-            message: "Section Deleted Successfully",
-        });
-    } catch (error) {
-        return res.status(500).json({
-            success: false,
-            message: "Unable to delete Section, please try Again",
-            error: error.message,
-        });
-    }
-};
+		//find the updated course and return 
+		const course = await Course.findById(courseId).populate({
+			path:"courseContent",
+			populate: {
+				path: "subSections"
+			}
+		})
+		.exec();
+
+		res.status(200).json({
+			success:true,
+			message:"Section deleted",
+			data:course
+		});
+	} catch (error) {
+		console.error("Error deleting section:", error);
+		res.status(500).json({
+			success: false,
+			message: "Internal server error",
+		});
+	}
+};   
