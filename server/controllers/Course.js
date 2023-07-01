@@ -4,6 +4,9 @@ const User = require("../models/User");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
 const Section = require("../models/Section");
 const SubSection = require("../models/SubSection");
+const CourseProgress = require("../models/CourseProgress")
+const { convertSecondsToDuration } = require("../utils/secToDuration")
+const {mongo, default:mongoose} =require("mongoose");
 
 // create Curse Handler Function
 exports.createCourse = async (req, res) => {
@@ -354,6 +357,7 @@ exports.getFullCourseDetails = async (req, res) => {
             });
         });
 
+
         const totalDuration = convertSecondsToDuration(totalDurationInSeconds);
 
         return res.status(200).json({
@@ -378,8 +382,16 @@ exports.getFullCourseDetails = async (req, res) => {
 exports.editCourse = async (req, res) => {
     try {
         const { courseId } = req.body;
+
         const updates = req.body;
         const course = await Course.findById(courseId);
+
+        console.log(course)
+
+        console.log("formData in Updates")
+        for (const key in updates) {
+            console.log(`${key} = ${updates[key]}`)
+        }
 
 
         // console.log("Inside Edit course controller")
@@ -400,18 +412,25 @@ exports.editCourse = async (req, res) => {
         }
 
         // Update only the fields that are present in the request body
+        console.log("Fine upto here")
         for (const key in updates) {
             // I believe here it should be course
             if (updates.hasOwnProperty(key)) {
                 if (key === "tag" || key === "instructions") {
                     course[key] = JSON.parse(updates[key]);
-                } else {
+                } else if(key==="category") {
+                    console.log("ERRRO HERE:",course[key],updates[key])
+                    course[key]=new mongoose.Types.ObjectId(updates[key] )
+                    console.log("ERRRO HERE:",course[key],updates[key])
+                }else {
                     course[key] = updates[key];
                 }
             }
         }
-
+        
+        // console.log("COURSE DATA AFtre Editing: " ,course)
         await course.save();
+        // console.log("Fine upto here 2")
 
         const updatedCourse = await Course.findOne({
             _id: courseId,
@@ -432,16 +451,17 @@ exports.editCourse = async (req, res) => {
             })
             .exec();
 
-        res.json({
+        console.log("Fine upto here 3")
+        res.status(200).json({
             success: true,
             message: "Course updated successfully",
             data: updatedCourse,
         });
     } catch (error) {
-        console.error(error);
+        // console.error(error);
         res.status(500).json({
             success: false,
-            message: "Internal server error",
+            message: "Unable to edit the course",
             error: error.message,
         });
     }

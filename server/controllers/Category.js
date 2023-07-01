@@ -1,4 +1,7 @@
 const Category = require("../models/Category");
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
 
 // create Category handler function
 exports.createCategory = async (req, res) => {
@@ -107,12 +110,17 @@ exports.categoryPageDetails = async (req, res) => {
                 },
             })
             .exec();
+
+            
+            // Explore flatMap
         const allCourses = allCategories.flatMap(
             (category) => category.courses
         );
         const mostSellingCourses = allCourses
             .sort((a, b) => b.sold - a.sold)
             .slice(0, 10);
+
+
         // console.log("mostSellingCourses COURSE", mostSellingCourses)
         res.status(200).json({
             success: true,

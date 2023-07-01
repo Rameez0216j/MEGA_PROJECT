@@ -1,0 +1,321 @@
+[
+    {
+        "courses": [
+            {
+                "course_title": "Python for Beginners",
+                "course_short_description": "Learn Python programming from scratch",
+                "course_price": "$49",
+                "tags": ["Python", "Programming", "Beginners"],
+                "thumbnail": "https://example.com/python_for_beginners.jpg",
+                "benefits": [
+                    "Understand the fundamentals of Python programming",
+                    "Write Python code to solve real-world problems",
+                    "Build a strong foundation for further Python development",
+                    "Get hands-on experience through coding exercises and projects"
+                ],
+                "requirements": [
+                    "No prior programming knowledge required",
+                    "A computer with Python installed (instructions provided)"
+                ]
+            },
+            {
+                "course_title": "Advanced Python Techniques",
+                "course_short_description": "Master advanced concepts and techniques in Python",
+                "course_price": "$79",
+                "tags": ["Python", "Advanced", "Programming"],
+                "thumbnail": "https://example.com/advanced_python_techniques.jpg",
+                "benefits": [
+                    "Explore advanced topics such as decorators, generators, and metaclasses",
+                    "Learn to optimize Python code for improved performance",
+                    "Gain expertise in working with complex data structures and algorithms",
+                    "Develop scalable and efficient Python applications"
+                ],
+                "requirements": [
+                    "Solid understanding of Python fundamentals",
+                    "Familiarity with object-oriented programming (OOP)"
+                ]
+            },
+            {
+                "course_title": "Python Web Development",
+                "course_short_description": "Build dynamic web applications using Python",
+                "course_price": "$99",
+                "tags": ["Python", "Web Development", "Django", "Flask"],
+                "thumbnail": "https://example.com/python_web_development.jpg",
+                "benefits": [
+                    "Create interactive web interfaces using Python frameworks",
+                    "Design and implement robust web applications",
+                    "Understand database integration and ORM concepts",
+                    "Deploy web applications to production servers"
+                ],
+                "requirements": [
+                    "Basic knowledge of Python programming",
+                    "Familiarity with HTML, CSS, and JavaScript"
+                ]
+            },
+            {
+                "course_title": "Data Analysis with Python",
+                "course_short_description": "Learn data analysis techniques using Python",
+                "course_price": "$69",
+                "tags": ["Python", "Data Analysis", "Pandas", "NumPy"],
+                "thumbnail": "https://example.com/data_analysis_with_python.jpg",
+                "benefits": [
+                    "Manipulate and clean large datasets using Python libraries",
+                    "Perform statistical analysis and data visualization",
+                    "Extract insights and make data-driven decisions",
+                    "Work on real-world data analysis projects"
+                ],
+                "requirements": [
+                    "Basic understanding of Python programming",
+                    "Familiarity with basic statistics concepts"
+                ]
+            },
+            {
+                "course_title": "Machine Learning with Python",
+                "course_short_description": "Introduction to machine learning using Python",
+                "course_price": "$89",
+                "tags": ["Python", "Machine Learning", "Scikit-learn"],
+                "thumbnail": "https://example.com/machine_learning_with_python.jpg",
+                "benefits": [
+                    "Learn machine learning algorithms and their implementation in Python",
+                    "Apply supervised and unsupervised learning techniques",
+                    "Evaluate and optimize machine learning models",
+                    "Build predictive models for various applications"
+                ],
+                "requirements": [
+                    "Solid understanding of Python programming",
+                    "Basic knowledge of linear algebra and statistics"
+                ]
+            }
+        ]
+    },
+    {
+        "courses": [
+            {
+                "course_title": "Full Stack Web Development",
+                "course_short_description": "Learn front-end and back-end web development",
+                "course_price": "$149",
+                "tags": [
+                    "Web Development",
+                    "Full Stack",
+                    "HTML",
+                    "CSS",
+                    "JavaScript",
+                    "Python",
+                    "Django"
+                ],
+                "thumbnail": "https://example.com/full_stack_web_development.jpg",
+                "benefits": [
+                    "Master both client-side and server-side web development",
+                    "Build responsive and dynamic web applications",
+                    "Integrate databases and APIs into your web projects",
+                    "Gain skills to work as a full stack web developer"
+                ],
+                "requirements": [
+                    "Basic knowledge of HTML, CSS, and JavaScript",
+                    "Familiarity with a programming language (Python recommended)"
+                ]
+            },
+            {
+                "course_title": "Front-End Web Development",
+                "course_short_description": "Focus on creating engaging user interfaces",
+                "course_price": "$99",
+                "tags": [
+                    "Web Development",
+                    "Front-End",
+                    "HTML",
+                    "CSS",
+                    "JavaScript",
+                    "React"
+                ],
+                "thumbnail": "https://example.com/front_end_web_development.jpg",
+                "benefits": [
+                    "Learn to create visually appealing and interactive web pages",
+                    "Master HTML, CSS, and JavaScript for front-end development",
+                    "Explore popular front-end frameworks like React",
+                    "Develop skills to build modern, responsive web interfaces"
+                ],
+                "requirements": [
+                    "Basic understanding of HTML, CSS, and JavaScript",
+                    "Familiarity with web design principles"
+                ]
+            },
+            {
+                "course_title": "Back-End Web Development",
+                "course_short_description": "Focus on server-side programming and databases",
+                "course_price": "$89",
+                "tags": [
+                    "Web Development",
+                    "Back-End",
+                    "Python",
+                    "Node.js",
+                    "Databases"
+                ],
+                "thumbnail": "https://example.com/back_end_web_development.jpg",
+                "benefits": [
+                    "Learn to build server-side applications using Python or Node.js",
+                    "Work with databases and handle data storage",
+                    "Develop APIs to connect front-end and back-end systems",
+                    "Acquire skills to become a proficient back-end developer"
+                ],
+                "requirements": [
+                    "Basic knowledge of a programming language (Python or JavaScript)",
+                    "Understanding of HTTP and client-server architecture"
+                ]
+            },
+            {
+                "course_title": "Responsive Web Design",
+                "course_short_description": "Create websites that adapt to different devices",
+                "course_price": "$79",
+                "tags": ["Web Development", "Responsive Design", "HTML", "CSS"],
+                "thumbnail": "https://example.com/responsive_web_design.jpg",
+                "benefits": [
+                    "Learn techniques to design websites that look great on any device",
+                    "Master responsive design principles using HTML and CSS",
+                    "Create fluid layouts and flexible user interfaces",
+                    "Optimize websites for a seamless user experience"
+                ],
+                "requirements": [
+                    "Basic understanding of HTML and CSS",
+                    "Familiarity with web design concepts"
+                ]
+            },
+            {
+                "course_title": "Web Development with JavaScript",
+                "course_short_description": "Build interactive web applications using JavaScript",
+                "course_price": "$109",
+                "tags": [
+                    "Web Development",
+                    "JavaScript",
+                    "HTML",
+                    "CSS",
+                    "React"
+                ],
+                "thumbnail": "https://example.com/web_development_with_javascript.jpg",
+                "benefits": [
+                    "Explore the power of JavaScript in web development",
+                    "Build dynamic and interactive web applications",
+                    "Integrate JavaScript frameworks like React",
+                    "Enhance user experiences with smooth animations and effects"
+                ],
+                "requirements": [
+                    "Basic knowledge of HTML and CSS",
+                    "Familiarity with JavaScript fundamentals"
+                ]
+            }
+        ]
+    },
+    {
+        "courses": [
+            {
+                "course_title": "Android App Development for Beginners",
+                "course_short_description": "Learn how to build Android apps from scratch",
+                "course_price": "$59",
+                "tags": [
+                    "Android Development",
+                    "Java",
+                    "Mobile Apps",
+                    "Beginners"
+                ],
+                "thumbnail": "https://example.com/android_app_development_for_beginners.jpg",
+                "benefits": [
+                    "Gain a solid foundation in Android app development",
+                    "Learn Java programming language for Android",
+                    "Build and deploy your own Android applications",
+                    "Understand the Android development ecosystem"
+                ],
+                "requirements": [
+                    "No prior programming knowledge required",
+                    "A computer with Android Studio installed (instructions provided)"
+                ]
+            },
+            {
+                "course_title": "Advanced Android Development",
+                "course_short_description": "Master advanced concepts and techniques in Android",
+                "course_price": "$79",
+                "tags": [
+                    "Android Development",
+                    "Java",
+                    "Mobile Apps",
+                    "Advanced"
+                ],
+                "thumbnail": "https://example.com/advanced_android_development.jpg",
+                "benefits": [
+                    "Explore advanced topics in Android app development",
+                    "Learn to build complex and scalable Android applications",
+                    "Integrate APIs and third-party libraries into your apps",
+                    "Optimize app performance and user experience"
+                ],
+                "requirements": [
+                    "Solid understanding of Java programming",
+                    "Experience with Android app development basics"
+                ]
+            },
+            {
+                "course_title": "Kotlin for Android Development",
+                "course_short_description": "Learn Kotlin programming language for Android",
+                "course_price": "$69",
+                "tags": [
+                    "Android Development",
+                    "Kotlin",
+                    "Mobile Apps",
+                    "Java"
+                ],
+                "thumbnail": "https://example.com/kotlin_for_android_development.jpg",
+                "benefits": [
+                    "Master Kotlin programming language for Android",
+                    "Understand the benefits of using Kotlin over Java",
+                    "Build modern and efficient Android apps with Kotlin",
+                    "Transition smoothly from Java to Kotlin"
+                ],
+                "requirements": [
+                    "Basic understanding of Java programming",
+                    "Familiarity with Android app development"
+                ]
+            },
+            {
+                "course_title": "Android UI/UX Design",
+                "course_short_description": "Create visually appealing Android app interfaces",
+                "course_price": "$49",
+                "tags": [
+                    "Android Development",
+                    "UI/UX Design",
+                    "Mobile Apps",
+                    "User Interface"
+                ],
+                "thumbnail": "https://example.com/android_ui_ux_design.jpg",
+                "benefits": [
+                    "Learn principles of Android UI/UX design",
+                    "Create visually appealing and intuitive app interfaces",
+                    "Understand user experience (UX) best practices",
+                    "Optimize your app for a great user interface (UI)"
+                ],
+                "requirements": [
+                    "Basic knowledge of Android app development",
+                    "Interest in creating aesthetically pleasing app interfaces"
+                ]
+            },
+            {
+                "course_title": "Firebase for Android Development",
+                "course_short_description": "Integrate Firebase into your Android apps",
+                "course_price": "$59",
+                "tags": [
+                    "Android Development",
+                    "Firebase",
+                    "Mobile Apps",
+                    "Backend"
+                ],
+                "thumbnail": "https://example.com/firebase_for_android_development.jpg",
+                "benefits": [
+                    "Learn to use Firebase as a backend for your Android apps",
+                    "Implement authentication, database, and cloud storage",
+                    "Utilize Firebase services for notifications and analytics",
+                    "Build powerful and connected Android applications"
+                ],
+                "requirements": [
+                    "Basic understanding of Android app development",
+                    "Familiarity with Java or Kotlin programming"
+                ]
+            }
+        ]
+    }
+]

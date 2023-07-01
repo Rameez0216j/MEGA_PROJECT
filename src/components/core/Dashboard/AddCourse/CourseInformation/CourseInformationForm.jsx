@@ -50,6 +50,9 @@ export default function CourseInformationForm() {
             setValue("coursePrice", course.price);
             setValue("courseTags", course.tag);
             setValue("courseBenefits", course.whatYouWillLearn);
+
+            console.log("course Category",course.category)
+
             setValue("courseCategory", course.category);
             setValue("courseRequirements", course.instructions);
             setValue("courseImage", course.thumbnail);
@@ -61,21 +64,29 @@ export default function CourseInformationForm() {
 
     const isFormUpdated = () => {
         const currentValues = getValues();
-        // console.log("changes after editing form values:", currentValues)
+        // console.log("changes after editing form values:", currentValues).save()
+        console.log("COURSE :",course)
+        console.log("Current Value :",currentValues)
+        console.log("entring isFormUpdated")
+        console.log("Errror Line :",currentValues?.courseCategory?._id ,course?.category?._id)
+
         if (
             currentValues.courseTitle !== course.courseName ||
             currentValues.courseShortDesc !== course.courseDescription ||
             currentValues.coursePrice !== course.price ||
             currentValues.courseTags.toString() !== course.tag.toString() ||
             currentValues.courseBenefits !== course.whatYouWillLearn ||
-            currentValues.courseCategory._id !== course.category._id ||
+            currentValues.courseCategory._id !== course.category._id||
             currentValues.courseRequirements.toString() !==
                 course.instructions.toString() ||
             currentValues.courseImage !== course.thumbnail
         ) {
+            console.log("isFormUpdated has no error")
             return true;
         }
+        console.log("isFormUpdated has no error")
         return false;
+
     };
 
     //   handle next button click
@@ -112,7 +123,7 @@ export default function CourseInformationForm() {
                 if (currentValues.courseBenefits !== course.whatYouWillLearn) {
                     formData.append("whatYouWillLearn", data.courseBenefits);
                 }
-                if (currentValues.courseCategory._id !== course.category._id) {
+                if (currentValues.courseCategory !== course.category) {
                     formData.append("category", data.courseCategory);
                 }
                 if (
@@ -127,8 +138,15 @@ export default function CourseInformationForm() {
                 if (currentValues.courseImage !== course.thumbnailImage) {
                     formData.append("thumbnailImage", data.courseImage);
                 }
-                // console.log("Edit Form data: ", formData)
+
+
+                // for(let key in formData){
+                //     console.log(`${key} = ${formData[key]}`)
+                // }
+
+
                 setLoading(true);
+
                 const result = await editCourseDetails(formData, token);
                 setLoading(false);
                 if (result) {
@@ -254,13 +272,18 @@ export default function CourseInformationForm() {
                 </label>
                 <select
                     {...register("courseCategory", { required: true })}
-                    defaultValue=""
+                    // defaultValue=""
                     id="courseCategory"
                     className="form-style w-full"
                 >
                     <option value="" disabled>
                         Choose a Category
                     </option>
+
+                    {/* <option value="" selected>
+                        Choose a Category
+                    </option> */}
+
                     {!loading &&
                         courseCategories?.map((category, index) => (
                             <option key={index} value={category?._id}>
