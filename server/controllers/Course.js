@@ -173,7 +173,7 @@ exports.getCourseDetails = async (req, res) => {
         //get id
         const { courseId } = req.body;
         //find course details
-        const courseDetails = await Course.find({ _id: courseId })
+        const courseDetails = await Course.findOne({ _id: courseId })
             .populate({
                 path: "instructor",
                 populate: {
@@ -191,6 +191,7 @@ exports.getCourseDetails = async (req, res) => {
             })
             .exec();
 
+
         //validation
         if (!courseDetails) {
             return res.status(400).json({
@@ -200,8 +201,23 @@ exports.getCourseDetails = async (req, res) => {
         }
 
         let totalDurationInSeconds = 0;
+
+        console.log("*************************")
+        console.log( courseDetails)
+        console.log("*************************")
+
+        console.log("*************************")
+        console.log( courseDetails.courseContent)
+        console.log("*************************")
+
         courseDetails.courseContent.forEach((content) => {
-            content.subSection.forEach((subSection) => {
+
+            console.log("*************************")
+            console.log( content.subSections)
+            console.log("*************************")
+
+
+            content.subSections.forEach((subSection) => {
                 const timeDurationInSeconds = parseInt(subSection.timeDuration);
                 totalDurationInSeconds += timeDurationInSeconds;
             });
@@ -260,6 +276,9 @@ exports.deleteCourse = async (req, res) => {
 
         // Find the course
         const course = await Course.findById(courseId);
+
+
+
         if (!course) {
             return res.status(404).json({ message: "Course not found" });
         }
@@ -271,6 +290,13 @@ exports.deleteCourse = async (req, res) => {
                 $pull: { courses: courseId },
             });
         }
+
+        // Remove Course from Instructors course list
+        // const instructorCourses = await User.findByIdAndUpdate(course?.instructor, {
+        //     $pull: { courses: courseId },
+        // });
+
+
 
         // Delete sections and sub-sections
         const courseSections = course.courseContent;

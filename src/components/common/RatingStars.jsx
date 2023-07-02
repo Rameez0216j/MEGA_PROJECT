@@ -25,7 +25,7 @@ const RatingStars = ({ Review_Count, Star_Size }) => {
     }, [Review_Count]);
 
     return (
-        <div>
+        <div className="flex text-yellow-100">
             {[...new Array(starCount.full)].map((_, i) => {
                 return <TiStarFullOutline key={i} size={Star_Size || 20} />;
             })}
