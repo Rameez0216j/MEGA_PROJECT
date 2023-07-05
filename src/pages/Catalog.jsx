@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { apiConnector } from "../services/apiconnector";
 import { categories } from "../services/apis";
 import { getCatalogaPageData } from "../services/operations/pageAndComponentData";
-import Course_Card from "../components/core/Catalog/Course_Card";
+import CourseCard from "../components/core/Catalog/CourseCard";
 import CourseSlider from "../components/core/Catalog/CourseSlider";
 import { useSelector } from "react-redux";
 import Error from "./Error";
@@ -24,7 +24,7 @@ const Catalog = () => {
 
             // console.log("Categories result : ",res)
 
-
+    console.log("swiper")
             const category_id = res?.data?.allCategory?.filter(
                 (ct) =>
                     ct.name.split(" ").join("-").toLowerCase() === catalogName
@@ -39,7 +39,7 @@ const Catalog = () => {
             try {
                 const res = await getCatalogaPageData(categoryId);
 
-
+                console.log("swiper D")
                 // console.log("Category result : ",res)
 
 
@@ -93,7 +93,7 @@ const Catalog = () => {
 
             {/* Section 1 */}
             <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
-                <div className="section_heading">
+                <div className="section_heading text-3xl text-richblack-5">
                     Courses to get you started
                 </div>
                 <div className="my-4 flex border-b border-b-richblack-600 text-sm">
@@ -130,7 +130,7 @@ const Catalog = () => {
 			{/* The category below is selected at random */}
             {/* Section 2 */}
             <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
-                <div className="section_heading">
+                <div className="section_heading text-3xl text-richblack-5">
                     Top courses in{" "}
                     {catalogPageData?.data?.differentCategory?.name}
                 </div>
@@ -145,13 +145,13 @@ const Catalog = () => {
 
             {/* Section 3 */}
             <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
-                <div className="section_heading">Frequently Bought</div>
+                <div className="section_heading text-3xl text-richblack-5">Frequently Bought</div>
                 <div className="py-8">
                     <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                         {catalogPageData?.data?.mostSellingCourses
                             ?.slice(0, 4)
                             .map((course, i) => (
-                                <Course_Card
+                                <CourseCard
                                     course={course}
                                     key={i}
                                     Height={"h-[400px]"}

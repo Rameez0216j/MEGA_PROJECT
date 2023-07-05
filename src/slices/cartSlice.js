@@ -15,7 +15,7 @@ const initialState = {
 
 const cartSlice = createSlice({
   name: "cart",
-  initialState:initialState,
+  initialState,
   reducers: {
     addToCart: (state,action) =>{
         const course =action.payload;
@@ -44,12 +44,12 @@ const cartSlice = createSlice({
     },
     removeFromCart: (state,action) =>{
         const course =action.payload;
-        const index = state.cart.findIndex((item)=> item._id===course._id);
+        const index = state.cart.findIndex((item)=> item._id===course);
 
         // if Course is already present to cart
         if(index >=0){
             state.totalItems--;
-            state.total-=course.cart[index].price;
+            state.total-=state.cart[index].price;
             state.cart.splice(index,1);
             
             // upadet to localStorage
