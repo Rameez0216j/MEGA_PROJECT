@@ -71,6 +71,9 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
                 //verifyPayment
                 verifyPayment({...response, courses}, token, navigate, dispatch);
                 //send successful wala mail
+
+                console.log('Verified now mail sending... ', response)
+
                 sendPaymentSuccessEmail(response, orderResponse.data.message.amount,token );
             }
         }
@@ -93,6 +96,9 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
 }
 
 async function sendPaymentSuccessEmail(response, amount, token) {
+    console.log("Resopnse :",response)
+    console.log("Amount :",amount)
+    console.log("Token :",token)
     try{
         await apiConnector("POST", SEND_PAYMENT_SUCCESS_EMAIL_API, {
             orderId: response.razorpay_order_id,

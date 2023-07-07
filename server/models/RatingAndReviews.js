@@ -1,7 +1,7 @@
 const mongoose=require("mongoose");
 
 const ratingAndReviewSchema=new mongoose.Schema({
-    User:{
+    user:{
         type:mongoose.Schema.Types.ObjectId,
         required:true,
         ref:"User"
@@ -10,7 +10,7 @@ const ratingAndReviewSchema=new mongoose.Schema({
         type:Number,
         required:true
     },
-    reviews:{
+    review:{
         type:String,
         required:true
     },

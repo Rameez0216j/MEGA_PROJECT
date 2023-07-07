@@ -5,9 +5,13 @@ const mailSender = require("../utils/mailSender");
 const {
     courseEnrollmentEmail,
 } = require("../mail/templates/courseEnrollmentEmail");
+const {
+    paymentSuccessEmail,
+} = require("../mail/templates/paymentSuccessEmail");
 // another new way of importing
 const { default: mongoose } = require("mongoose");
-const crypto = require('crypto');
+const crypto = require("crypto");
+const CourseProgress = require("../models/CourseProgress");
 
 exports.capturePayment = async (req, res) => {
     const { courses } = req.body;
@@ -141,12 +145,20 @@ const enrollStudents = async (courses, userId, res) => {
                     .json({ success: false, message: "Course not Found" });
             }
 
+            // adding a new course progress tracker
+            const courseProgress = await CourseProgress.create({
+                courseID: courseId,
+                userID: userId,
+                completedVideos: [],
+            });
+
             //find the student and add the course to their list of enrolledCOurses
             const enrolledStudent = await User.findByIdAndUpdate(
                 userId,
                 {
                     $push: {
                         courses: courseId,
+                        courseProgress: courseProgress._id
                     },
                 },
                 { new: true }
@@ -175,6 +187,10 @@ exports.sendPaymentSuccessEmail = async (req, res) => {
     const { orderId, paymentId, amount } = req.body;
 
     const userId = req.user.id;
+
+    console.log("************************************************");
+    console.log(orderId, paymentId, amount, userId);
+    console.log("************************************************");
 
     if (!orderId || !paymentId || !amount || !userId) {
         return res

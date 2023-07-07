@@ -9,6 +9,7 @@ exports.createRating = async (req,res) =>{
         const userId=req.user.id;
         // fetching data from req.body
         const {rating,review,courseId} =req.body;
+        console.log("Inside creatinon of rating and review",rating,review,courseId)
 
         // check if user is enrolled or not
         const courseDetails= await Course.findOne(
@@ -43,13 +44,12 @@ exports.createRating = async (req,res) =>{
         });
 
         // update course details
-        const updatedCourseDetails = await Course.findByIdAndUpdate((
+        const updatedCourseDetails = await Course.findByIdAndUpdate(
             {_id:courseId},
             {
                 $push:{ratingAndReviews:ratingReview._id}
             },
-            {new:true}
-        ));
+            {new:true});
         console.log(updatedCourseDetails);
         // return response
         return res.status(200).json({
