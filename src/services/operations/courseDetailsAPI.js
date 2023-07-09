@@ -54,7 +54,7 @@ export const fetchCourseDetails = async (courseId) => {
         if (!response.data.success) {
             throw new Error(response.data.message);
         }
-        console.log("Response : ",response)
+        console.log("Response : ", response);
         result = response.data;
     } catch (error) {
         console.log("COURSE_DETAILS_API API ERROR............", error);
@@ -89,14 +89,12 @@ export const addCourseDetails = async (data, token) => {
     let result = null;
     const toastId = toast.loading("Loading...");
     try {
-
-        console.log("API conect call")
+        console.log("API conect call");
         const response = await apiConnector("POST", CREATE_COURSE_API, data, {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,
         });
-        console.log("API conect call end")
-
+        console.log("API conect call end");
 
         console.log("CREATE COURSE API RESPONSE............", response);
         if (!response?.data?.success) {
@@ -140,13 +138,11 @@ export const createSection = async (data, token) => {
     let result = null;
     const toastId = toast.loading("Loading...");
     try {
-
         const response = await apiConnector("POST", CREATE_SECTION_API, data, {
             Authorization: `Bearer ${token}`,
         });
 
         console.log("CREATE SECTION API RESPONSE............", response);
-
 
         if (!response?.data?.success) {
             throw new Error("Could Not Create Section");
@@ -182,10 +178,7 @@ export const createSubSection = async (data, token) => {
 
         result = response?.data?.updatedSection;
 
-
-        console.log("Result for creating sub section",result)
-
-
+        console.log("Result for creating sub section", result);
     } catch (error) {
         console.log("CREATE SUB-SECTION API ERROR............", error);
         toast.error(error.message);
@@ -285,9 +278,7 @@ export const deleteSubSection = async (data, token) => {
         toast.success("Lecture Deleted");
 
         result = response?.data?.data;
-        console.log("result for deleting subSection",result);
-
-
+        console.log("result for deleting subSection", result);
     } catch (error) {
         console.log("DELETE SUB-SECTION API ERROR............", error);
         toast.error(error.message);
@@ -314,7 +305,7 @@ export const fetchInstructorCourses = async (token) => {
             throw new Error("Could Not Fetch Instructor Courses");
         }
         result = response?.data?.data;
-        console.log("INSTRUCTOR COURSES :",result)
+        console.log("INSTRUCTOR COURSES :", result);
     } catch (error) {
         console.log("INSTRUCTOR COURSES API ERROR............", error);
         toast.error(error.message);

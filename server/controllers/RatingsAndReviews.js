@@ -9,7 +9,7 @@ exports.createRating = async (req,res) =>{
         const userId=req.user.id;
         // fetching data from req.body
         const {rating,review,courseId} =req.body;
-        console.log("Inside creatinon of rating and review",rating,review,courseId)
+        // console.log("Inside creatinon of rating and review",rating,review,courseId)
 
         // check if user is enrolled or not
         const courseDetails= await Course.findOne(

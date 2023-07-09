@@ -14,12 +14,13 @@ const store = configureStore({
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  // Study about strictmode this is responsible for two times rendering of componemnts why it does it 2 times find it out
+  // <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <App />
         <Toaster />
       </BrowserRouter>
     </Provider>
-  </React.StrictMode>
+  // </React.StrictMode>
 );

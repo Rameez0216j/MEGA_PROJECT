@@ -36,6 +36,7 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
         }
 
         //initiate the order
+        console.log("Initiating paymet : ",courses)
         const orderResponse = await apiConnector("POST", COURSE_PAYMENT_API, 
                                 {courses},
                                 {

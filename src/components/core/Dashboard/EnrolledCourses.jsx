@@ -15,7 +15,16 @@ const EnrolledCourses = () => {
     const getEnrolledCourses = async () => {
         try {
             const res = await getUserEnrolledCourses(token);
-            console.log("All courses of student : ", res);
+            // console.log("All courses of student : ", res);
+
+            let courses=[]
+            for(const course of res){
+                console.log("course : ",course)
+                courses.push(course.courseName)
+            }
+            console.log("All courses of student : ", courses);
+
+
             if (!res) return;
             setEnrolledCourses(res);
         } catch (error) {

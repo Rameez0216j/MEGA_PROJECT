@@ -38,7 +38,7 @@ const CodeBlocks = ({
             </div>
 
             {/* Section-2 */}
-            <div className="relative h-fit flex flex-row text-10 w-[100%] py-4 lg:w-[600px] bg-gradient-to-br from-[#0E1A2D] to-[#111E32] border-l-2 border-t-2">
+            <div className="relative h-fit flex flex-row text-10 w-[100%] py-4 lg:w-[600px] bg-gradient-to-br from-[#0E1A2D] to-[#111E32] code-border">
                 <div className="text-center h-[100%] flex flex-col w-[10%] text-richblack-400 font-inter font-bold">
                     <p>1</p>
                     <p>2</p>
@@ -63,7 +63,7 @@ const CodeBlocks = ({
                         style={{
                             whiteSpace: "pre-wrap", // for /n to work
                             display: "block",
-                            color:"green",
+                            color:"white",
                         }}
                         omitDeletionAnimation={true}
                     />

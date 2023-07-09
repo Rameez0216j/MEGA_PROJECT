@@ -15,6 +15,7 @@ const CourseProgress = require("../models/CourseProgress");
 
 exports.capturePayment = async (req, res) => {
     const { courses } = req.body;
+    console.log("Courses : ",courses)
     const userId = req.user.id;
 
     if (courses.length === 0) {
@@ -26,6 +27,7 @@ exports.capturePayment = async (req, res) => {
     for (const course_id of courses) {
         let course;
         try {
+            console.log("Checking for : ",course_id)
             course = await Course.findById(course_id);
             if (!course) {
                 res.status(200).json({
@@ -33,6 +35,8 @@ exports.capturePayment = async (req, res) => {
                     message: "course is not available",
                 });
             }
+
+            // console.log("course found : ",course)
 
             const uid = new mongoose.Types.ObjectId(userId);
             if (course.studentsEnrolled.includes(uid)) {
@@ -50,6 +54,8 @@ exports.capturePayment = async (req, res) => {
                 .json({ success: false, message: error.message });
         }
     }
+
+    console.log("Total Amount : ",totalAmount);
 
     const currency = "INR";
     const options = {

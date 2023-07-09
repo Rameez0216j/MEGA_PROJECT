@@ -43,7 +43,7 @@ const CourseSlider = ({ Courses }) => {
 
             {Courses?.length ? (
                 <Swiper
-                    slidesPerView={2}
+                    slidesPerView={3}
                     // slidesPerView={3} // not working for 3 find out why
                     spaceBetween={24}
                     loop={true}
