@@ -188,8 +188,14 @@ exports.getEnrolledCourses = async (req, res) => {
             let totalDurationInSeconds = 0;
             SubsectionLength = 0;
             // for all sections
-            for (var j = 0; j < userDetails.courses[i].courseContent.length; j++) {
-                totalDurationInSeconds += userDetails.courses[i].courseContent[j].subSections.reduce(
+            for (
+                var j = 0;
+                j < userDetails.courses[i].courseContent.length;
+                j++
+            ) {
+                totalDurationInSeconds += userDetails.courses[i].courseContent[
+                    j
+                ].subSections.reduce(
                     (acc, curr) => acc + parseInt(curr.timeDuration),
                     0
                 );
@@ -207,7 +213,6 @@ exports.getEnrolledCourses = async (req, res) => {
             courseProgressCount = courseProgressCount?.completedVideos.length;
             // console.log("Executed upto here 3")
             if (SubsectionLength === 0) {
-
                 // there is no such field like progressPercentage in course modal it is done for an object named useretails for data of course completion
 
                 // console.log("Executed upto here 4")
@@ -240,5 +245,32 @@ exports.getEnrolledCourses = async (req, res) => {
             success: false,
             message: error.message,
         });
+    }
+};
+
+exports.instructorDashboard = async (req, res) => {
+    try {
+        const CourseDetails = await Course.find({ instructor: req.user.id });
+        const courseData = CourseDetails.map((course) => {
+            const totalStudentsEnrolled = course.studentsEnrolled.length;
+            const totalAmountGenerated = totalStudentsEnrolled * course.price;
+
+            // creating an object for the additional info
+            const courseDataWithStats = {
+                _id: course._id,
+                courseName: course.courseName,
+                courseDescription: course.courseDescription,
+                totalStudentsEnrolled,
+                totalAmountGenerated,
+            };
+            return courseDataWithStats;
+        });
+        res.status(200).json({
+            success: true,
+            course: courseData,
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal Server Error" });
     }
 };

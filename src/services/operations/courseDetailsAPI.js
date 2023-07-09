@@ -311,6 +311,7 @@ export const fetchInstructorCourses = async (token) => {
         toast.error(error.message);
     }
     toast.dismiss(toastId);
+    console.log("Instructor Courses Data :",result);
     return result;
 };
 
