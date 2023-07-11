@@ -35,7 +35,8 @@ app.use(cookieParser());
 app.use(
     // entertain request from frontend at 3000 port
     cors({
-        origin:"http://localhost:3000",
+        // origin:"http://localhost:3000",
+        origin:true,
         credentials:true
     })
 )
