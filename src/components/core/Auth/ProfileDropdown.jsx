@@ -9,11 +9,12 @@ import { logout } from "../../../services/operations/authAPI";
 
 export default function ProfileDropdown() {
     const { user } = useSelector((state) => state.profile);
+    const { cart } = useSelector((state) => state.cart);
+    const { token } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const ref = useRef(null);
-
     useOnClickOutside(ref, () => setOpen(false));
 
     if (!user) return null;
@@ -45,7 +46,7 @@ export default function ProfileDropdown() {
                     </Link>
                     <div
                         onClick={() => {
-                            dispatch(logout(navigate));
+                            dispatch(logout(navigate,user,cart,token));
                             setOpen(false);
                         }}
                         className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm text-richblack-100 hover:bg-richblack-700 hover:text-richblack-25"
