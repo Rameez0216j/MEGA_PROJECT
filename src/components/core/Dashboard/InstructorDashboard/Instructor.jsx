@@ -47,7 +47,9 @@ export default function Instructor() {
                 </p>
             </div>
             {loading ? (
-                <div className="spinner"></div>
+                <div className="h-[80vh] flex justify-center items-center">
+                    <div className="spinner"></div>
+                </div>
             ) : courses.length > 0 ? (
                 <div>
                     <div className="my-4 flex h-[450px] space-x-4">
