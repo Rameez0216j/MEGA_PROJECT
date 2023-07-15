@@ -136,7 +136,7 @@ exports.updateDisplayPicture = async (req, res) => {
 exports.getEnrolledCourses = async (req, res) => {
     try {
         const userId = req.user.id;
-        const userDetails = await User.findOne({
+        let userDetails = await User.findOne({
             _id: userId,
         })
             .populate({
@@ -182,8 +182,11 @@ exports.getEnrolledCourses = async (req, res) => {
 
         // console.log("Executed upto here 1")
         // console.log("Executed upto here 001")
+
+        // converting from mongoose schema to object to apply changes inside it
+        userDetails = userDetails.toObject();
         var SubsectionLength = 0;
-        // for all sections
+        // for all courses
         for (var i = 0; i < userDetails.courses.length; i++) {
             let totalDurationInSeconds = 0;
             SubsectionLength = 0;
@@ -199,12 +202,16 @@ exports.getEnrolledCourses = async (req, res) => {
                     (acc, curr) => acc + parseInt(curr.timeDuration),
                     0
                 );
-                userDetails.courses[i].totalDuration = convertSecondsToDuration(
-                    totalDurationInSeconds
-                );
+
                 SubsectionLength +=
                     userDetails.courses[i].courseContent[j].subSections.length;
             }
+            userDetails.courses[i].totalDuration = convertSecondsToDuration(
+                totalDurationInSeconds
+            );
+
+            // console.log("Here :",userDetails.courses[i].totalDuration)
+
             let courseProgressCount = await CourseProgress.findOne({
                 courseID: userDetails.courses[i]._id,
                 userID: userId,
@@ -228,8 +235,12 @@ exports.getEnrolledCourses = async (req, res) => {
                             multiplier
                     ) / multiplier;
             }
+            // console.log("Here :",userDetails.courses[i].progressPercentage)
         }
 
+        console.log("USER DETAILS : ", userDetails.courses[1]);
+
+        
         if (!userDetails) {
             return res.status(400).json({
                 success: false,

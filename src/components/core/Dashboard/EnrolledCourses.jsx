@@ -17,12 +17,14 @@ const EnrolledCourses = () => {
             const res = await getUserEnrolledCourses(token);
             // console.log("All courses of student : ", res);
 
-            let courses=[]
-            for(const course of res){
-                console.log("course : ",course)
-                courses.push(course.courseName)
-            }
-            console.log("All courses of student : ", courses);
+            // let courses=[]
+            // for(const course of res){
+            //     // console.log("course : ",course)
+            //     courses.push(course.courseName)
+            // }
+            // console.log("All courses of student : ", courses)
+
+            console.log("All courses of student : ", res);
 
 
             if (!res) return;
@@ -94,7 +96,7 @@ const EnrolledCourses = () => {
                             <div className="w-1/4 px-2 py-3">{course?.totalDuration}</div>
                             <div className="flex w-1/5 flex-col gap-2 px-2 py-3">
                                 <p>
-                                    Progress : {course?.ProgressPercentage || 0}
+                                    Progress : {course?.progressPercentage || 0}%
                                 </p>
                                 <ProgressBar
                                     completed={course?.progressPercentage || 0}
