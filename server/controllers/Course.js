@@ -310,6 +310,11 @@ exports.deleteCourse = async (req, res) => {
             return res.status(404).json({ message: "Course not found" });
         }
 
+        // Remove Course from Instructors course list
+        await User.findByIdAndUpdate(course?.instructor,{
+            $pull: { courses: courseId },
+        });
+
         // Unenroll students from the course
         const studentsEnrolled = course.studentsEnrolled;
         for (const studentId of studentsEnrolled) {
@@ -317,11 +322,6 @@ exports.deleteCourse = async (req, res) => {
                 $pull: { courses: courseId },
             });
         }
-
-        // Remove Course from Instructors course list
-        // const instructorCourses = await User.findByIdAndUpdate(course?.instructor, {
-        //     $pull: { courses: courseId },
-        // });
 
         // Delete sections and sub-sections
         const courseSections = course.courseContent;

@@ -1,40 +1,56 @@
-{
-    "CourseDuration test": {
-      "_id": "649be3627673483d0da71242",
-      "courseName": "Machine learning",
-      "courseDescription": "Learn ML with India's most wonderful teachers.",
-      "instructor": "64947813f623d62da4e6d96b",
-      "whatYouWillLearn": "ML learning with ease",
-      "courseContent": [
-        {
-          "_id": "649be3707673483d0da71246",
-          "sectionName": "Introduction",
-          "subSections": [],
-          "__v": 0
-        },
-        {
-          "_id": "64a18e55a9f5fe42d21d4c3f",
-          "sectionName": "Lesson 1",
-          "subSections": [],
-          "__v": 0
-        }
-      ],
-      "ratingAndReviews": [
-        "64aa5be3f16b3852a613a27c",
-        "64aaab25c66ac463c907949d"
-      ],
-      "price": 299,
-      "thumbnail": "https://res.cloudinary.com/ddwqtoccf/image/upload/v1687937888/MegaProjectTesting/cqllsc4iihfr6lbpgneu.jpg",
-      "tag": [ "ML", "AI", "Python", "Development" ],
-      "category": "649b01b9fa6b1a5ed8a9145c",
-      "studentsEnrolled": [
-        "648a7106eec4d31b7f6b9563",
-        "64a6fe2e57a5bb193a63102d"
-      ],
-      "instructions": [ "Your time and zeal to learn the complex things." ],
-      "status": "Published",
-      "__v": 0,
-      "createdAt": "2023-07-03T04:57:27.742Z"
-    }
-  }
-  
+courses
+Array (27)
+0
+64993d763597cf3531ccc92d
+1
+649940fe3597cf3531ccc939
+2
+6499565c3597cf3531ccc954
+3
+6499a70a4dba1ee4ad36e7ca
+4
+6499a7324dba1ee4ad36e7d8
+5
+6499ac7c781fd9fdf55a8d0b
+6
+6499d9271b73b72e23c912db
+7
+6499de631daff58c47c17ae9
+8
+6499f35d3460f31cd37954ef
+9
+649be3627673483d0da71242
+10
+649be9da7673483d0da71270
+11
+649c26cb5e9aaa9dfc0e55c8
+12
+649c29fb565bd35e53381f0c
+13
+649c2a2b565bd35e53381f33
+14
+64a25b826bfd8ca01ba85b3d
+15
+64a25cbb6bfd8ca01ba85b59
+16
+64a25dc16bfd8ca01ba85b75
+17
+64a25e8d6bfd8ca01ba85b91
+18
+64a260376bfd8ca01ba85bcb
+19
+64a261736bfd8ca01ba85be7
+20
+64a2645c6bfd8ca01ba85c2b
+21
+64a265476bfd8ca01ba85c47
+22
+64a266866bfd8ca01ba85c63
+23
+64a267836bfd8ca01ba85c7f
+24
+64a26def6bfd8ca01ba85cc6
+25
+64a26ea96bfd8ca01ba85ce2
+26
+64a26f956bfd8ca01ba85d00
