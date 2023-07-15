@@ -48,22 +48,18 @@ export default function CoursesTable({ courses, setCourses }) {
                         <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
                             Courses
                         </Th>
-                        <Th className="text-left text-sm font-medium uppercase text-richblack-100">
+                        <Th className="w-[100px] text-center text-sm font-medium uppercase text-richblack-100">
                             Duration
                         </Th>
-                        <Th className="text-left text-sm font-medium uppercase text-richblack-100">
+                        <Th className="w-[100px] text-center text-sm font-medium uppercase text-richblack-100">
                             Price
                         </Th>
-                        <Th className="text-left text-sm font-medium uppercase text-richblack-100">
+                        <Th className="w-[100px] text-center text-sm font-medium uppercase text-richblack-100">
                             Actions
                         </Th>
                     </Tr>
                 </Thead>
                 <Tbody>
-
-                    {
-                        console.log("Courses Data : ",courses)
-                    }
 
                     {courses?.length === 0 ? (
                         <Tr>
@@ -117,13 +113,13 @@ export default function CoursesTable({ courses, setCourses }) {
                                         )}
                                     </div>
                                 </Td>
-                                <Td className="text-sm font-medium text-richblack-100">
-                                    2hr 30min
+                                <Td className="text-sm w-[100px] text-center font-medium text-richblack-100">
+                                    {course?.totalDuration}
                                 </Td>
-                                <Td className="text-sm font-medium text-richblack-100">
+                                <Td className="text-sm w-[100px] text-center font-medium text-richblack-100">
                                     ₹{course.price}
                                 </Td>
-                                <Td className="text-sm font-medium text-richblack-100 ">
+                                <Td className="text-sm w-[100px] text-center font-medium text-richblack-100 ">
                                     <button
                                         disabled={loading}
                                         onClick={() => {

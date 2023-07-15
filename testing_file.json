@@ -1,107 +1,40 @@
 {
-    "USER DETAILS": {
-        "_id": "64a26ea96bfd8ca01ba85ce2",
-        "courseName": "Kotlin for Android Development",
-        "courseDescription": "Learn Kotlin programming language for Android",
-        "instructor": {
-            "_id": "64947813f623d62da4e6d96b",
-            "firstName": "Rameez",
-            "lastName": "Ahmad",
-            "email": "rameezahmad20131a4245@gmail.com",
-            "password": "$2b$10$i9Jc4jzAu6JO/HQ1M6PEXOEthFx3VklkGH/eUaHFAYKdsoI2vkmcK",
-            "accountType": "Instructor",
-            "active": true,
-            "approved": true,
-            "additionalDetails": {
-                "_id": "64947813f623d62da4e6d969",
-                "gender": "Male",
-                "dateOfBirth": "2002-09-03",
-                "about": "Web Developer and DSA hardcore Coder. Code Lover.",
-                "contactNumber": "8309186026",
-                "__v": 0
-            },
-            "courses": [
-                "64993d763597cf3531ccc92d",
-                "649940fe3597cf3531ccc939",
-                "6499565c3597cf3531ccc954",
-                "6499a70a4dba1ee4ad36e7ca",
-                "6499a7324dba1ee4ad36e7d8",
-                "6499ac7c781fd9fdf55a8d0b",
-                "6499d9271b73b72e23c912db",
-                "6499de631daff58c47c17ae9",
-                "6499ee4aaeaf204ac1773d31",
-                "6499f35d3460f31cd37954ef",
-                "649be3627673483d0da71242",
-                "649be9da7673483d0da71270",
-                "649c26cb5e9aaa9dfc0e55c8",
-                "649c29fb565bd35e53381f0c",
-                "649c2a2b565bd35e53381f33",
-                "64a25b826bfd8ca01ba85b3d",
-                "64a25cbb6bfd8ca01ba85b59",
-                "64a25dc16bfd8ca01ba85b75",
-                "64a25e8d6bfd8ca01ba85b91",
-                "64a260376bfd8ca01ba85bcb",
-                "64a261736bfd8ca01ba85be7",
-                "64a2645c6bfd8ca01ba85c2b",
-                "64a265476bfd8ca01ba85c47",
-                "64a266866bfd8ca01ba85c63",
-                "64a267836bfd8ca01ba85c7f",
-                "64a26def6bfd8ca01ba85cc6",
-                "64a26ea96bfd8ca01ba85ce2",
-                "64a26f956bfd8ca01ba85d00"
-            ],
-            "image": "https://res.cloudinary.com/ddwqtoccf/image/upload/v1687792184/MegaProjectTesting/rmc2ou9hkyja9e3kfbov.jpg",
-            "courseProgress": [],
-            "createdAt": "2023-06-22T16:34:27.649Z",
-            "updatedAt": "2023-07-03T06:49:57.763Z",
-            "__v": 0
+    "CourseDuration test": {
+      "_id": "649be3627673483d0da71242",
+      "courseName": "Machine learning",
+      "courseDescription": "Learn ML with India's most wonderful teachers.",
+      "instructor": "64947813f623d62da4e6d96b",
+      "whatYouWillLearn": "ML learning with ease",
+      "courseContent": [
+        {
+          "_id": "649be3707673483d0da71246",
+          "sectionName": "Introduction",
+          "subSections": [],
+          "__v": 0
         },
-        "whatYouWillLearn": "Master Kotlin programming language for Android. Understand the benefits of using Kotlin over Java. Build modern and efficient Android apps with Kotlin. Transition smoothly from Java to Kotlin.",
-        "courseContent": [
-            {
-                "_id": "64a26eb86bfd8ca01ba85ce8",
-                "sectionName": "Introduction",
-                "subSections": [],
-                "__v": 0
-            }
-        ],
-        "ratingAndReviews": [
-            {
-                "_id": "64aaab3bc66ac463c90794be",
-                "user": "64a6fe2e57a5bb193a63102d",
-                "rating": 4,
-                "review": "Comprehensive course for learning Kotlin and building Android apps efficiently.",
-                "course": "64a26ea96bfd8ca01ba85ce2",
-                "__v": 0
-            }
-        ],
-        "price": 1999,
-        "thumbnail": "https://res.cloudinary.com/ddwqtoccf/image/upload/v1688366761/MegaProjectTesting/fwagzlcnbujbwiuxpzkh.jpg",
-        "tag": ["Android Development", "Kotlin", "Mobile Apps", "Java"],
-        "category": {
-            "_id": "649b0182fa6b1a5ed8a9145a",
-            "name": "Android Development",
-            "description": "Amazing and interactive apps are easy to build with our Android Development course.",
-            "courses": [
-                "649be9da7673483d0da71270",
-                "649c29fb565bd35e53381f0c",
-                "64a267836bfd8ca01ba85c7f",
-                "64a26def6bfd8ca01ba85cc6",
-                "64a26ea96bfd8ca01ba85ce2",
-                "64a26f956bfd8ca01ba85d00"
-            ],
-            "__v": 0
-        },
-        "studentsEnrolled": [
-            "648a7106eec4d31b7f6b9563",
-            "64a6fe2e57a5bb193a63102d"
-        ],
-        "instructions": [
-            "Basic understanding of Java programming",
-            "Familiarity with Android app development"
-        ],
-        "status": "Published",
-        "createdAt": "2023-07-03T04:57:27.742Z",
-        "__v": 0
+        {
+          "_id": "64a18e55a9f5fe42d21d4c3f",
+          "sectionName": "Lesson 1",
+          "subSections": [],
+          "__v": 0
+        }
+      ],
+      "ratingAndReviews": [
+        "64aa5be3f16b3852a613a27c",
+        "64aaab25c66ac463c907949d"
+      ],
+      "price": 299,
+      "thumbnail": "https://res.cloudinary.com/ddwqtoccf/image/upload/v1687937888/MegaProjectTesting/cqllsc4iihfr6lbpgneu.jpg",
+      "tag": [ "ML", "AI", "Python", "Development" ],
+      "category": "649b01b9fa6b1a5ed8a9145c",
+      "studentsEnrolled": [
+        "648a7106eec4d31b7f6b9563",
+        "64a6fe2e57a5bb193a63102d"
+      ],
+      "instructions": [ "Your time and zeal to learn the complex things." ],
+      "status": "Published",
+      "__v": 0,
+      "createdAt": "2023-07-03T04:57:27.742Z"
     }
-}
+  }
+  

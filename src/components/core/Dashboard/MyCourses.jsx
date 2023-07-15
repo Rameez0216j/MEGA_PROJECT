@@ -18,6 +18,8 @@ export default function MyCourses() {
             if (result) {
                 setCourses(result);
             }
+
+            // console.log("INSTRUCTOR COURSES HAIN :",result)
         };
 
         // calling the function on every reload

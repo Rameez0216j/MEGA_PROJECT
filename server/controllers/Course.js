@@ -4,18 +4,17 @@ const User = require("../models/User");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
 const Section = require("../models/Section");
 const SubSection = require("../models/SubSection");
-const CourseProgress = require("../models/CourseProgress")
-const { convertSecondsToDuration } = require("../utils/secToDuration")
-const {mongo, default:mongoose} =require("mongoose");
+const CourseProgress = require("../models/CourseProgress");
+const { convertSecondsToDuration } = require("../utils/secToDuration");
+const { mongo, default: mongoose } = require("mongoose");
 
 // create Curse Handler Function
 exports.createCourse = async (req, res) => {
     try {
-
-        console.log("Request start")
+        console.log("Request start");
         // Get user ID from request object
         const userId = req.user.id;
-        console.log("data in body :",req.body)
+        console.log("data in body :", req.body);
 
         // Get all required fields from request body
         let {
@@ -191,7 +190,6 @@ exports.getCourseDetails = async (req, res) => {
             })
             .exec();
 
-
         //validation
         if (!courseDetails) {
             return res.status(400).json({
@@ -202,20 +200,18 @@ exports.getCourseDetails = async (req, res) => {
 
         let totalDurationInSeconds = 0;
 
-        console.log("*************************")
-        console.log( courseDetails)
-        console.log("*************************")
+        console.log("*************************");
+        console.log(courseDetails);
+        console.log("*************************");
 
-        console.log("*************************")
-        console.log( courseDetails.courseContent)
-        console.log("*************************")
+        console.log("*************************");
+        console.log(courseDetails.courseContent);
+        console.log("*************************");
 
         courseDetails.courseContent.forEach((content) => {
-
-            console.log("*************************")
-            console.log( content.subSections)
-            console.log("*************************")
-
+            console.log("*************************");
+            console.log(content.subSections);
+            console.log("*************************");
 
             content.subSections.forEach((subSection) => {
                 const timeDurationInSeconds = parseInt(subSection.timeDuration);
@@ -250,9 +246,42 @@ exports.getInstructorCourses = async (req, res) => {
         const instructorId = req.user.id;
 
         // Find all courses belonging to the instructor
-        const instructorCourses = await Course.find({
+        let instructorCourses = await Course.find({
             instructor: instructorId,
-        }).sort({ createdAt: -1 });
+        })
+            .sort({ createdAt: -1 })
+            .populate({
+                path: "courseContent",
+                populate: {
+                    path: "subSections",
+                },
+            });
+
+
+        // changing schema to normal object
+        instructorCourses = instructorCourses.map((course,index)=> course.toObject());
+        for (let i = 0; i < instructorCourses.length; i++) {
+            let totalDurationInSeconds = 0;
+            for (
+                let j = 0;
+                j < instructorCourses[i].courseContent.length;
+                j++
+            ) {
+                totalDurationInSeconds += instructorCourses[i].courseContent[
+                    j
+                ].subSections.reduce(
+                    (acc, curr) => acc + parseInt(curr.timeDuration),
+                    0
+                );
+            }
+            instructorCourses[i].totalDuration = convertSecondsToDuration(
+                totalDurationInSeconds
+            );
+
+            // console.log("CourseDuration :", instructorCourses[i].totalDuration);
+        }
+
+        // console.log("CourseDuration test :", instructorCourses[0]);
 
         // Return the instructor's courses
         res.status(200).json({
@@ -277,8 +306,6 @@ exports.deleteCourse = async (req, res) => {
         // Find the course
         const course = await Course.findById(courseId);
 
-
-
         if (!course) {
             return res.status(404).json({ message: "Course not found" });
         }
@@ -295,8 +322,6 @@ exports.deleteCourse = async (req, res) => {
         // const instructorCourses = await User.findByIdAndUpdate(course?.instructor, {
         //     $pull: { courses: courseId },
         // });
-
-
 
         // Delete sections and sub-sections
         const courseSections = course.courseContent;
@@ -383,7 +408,6 @@ exports.getFullCourseDetails = async (req, res) => {
             });
         });
 
-
         const totalDuration = convertSecondsToDuration(totalDurationInSeconds);
 
         return res.status(200).json({
@@ -412,13 +436,12 @@ exports.editCourse = async (req, res) => {
         const updates = req.body;
         const course = await Course.findById(courseId);
 
-        console.log(course)
+        console.log(course);
 
-        console.log("formData in Updates")
+        console.log("formData in Updates");
         for (const key in updates) {
-            console.log(`${key} = ${updates[key]}`)
+            console.log(`${key} = ${updates[key]}`);
         }
-
 
         // console.log("Inside Edit course controller")
 
@@ -438,22 +461,22 @@ exports.editCourse = async (req, res) => {
         }
 
         // Update only the fields that are present in the request body
-        console.log("Fine upto here")
+        console.log("Fine upto here");
         for (const key in updates) {
             // I believe here it should be course
             if (updates.hasOwnProperty(key)) {
                 if (key === "tag" || key === "instructions") {
                     course[key] = JSON.parse(updates[key]);
-                } else if(key==="category") {
-                    console.log("ERRRO HERE:",course[key],updates[key])
-                    course[key]=new mongoose.Types.ObjectId(updates[key] )
-                    console.log("ERRRO HERE:",course[key],updates[key])
-                }else {
+                } else if (key === "category") {
+                    console.log("ERRRO HERE:", course[key], updates[key]);
+                    course[key] = new mongoose.Types.ObjectId(updates[key]);
+                    console.log("ERRRO HERE:", course[key], updates[key]);
+                } else {
                     course[key] = updates[key];
                 }
             }
         }
-        
+
         // console.log("COURSE DATA AFtre Editing: " ,course)
         await course.save();
         // console.log("Fine upto here 2")
@@ -477,7 +500,7 @@ exports.editCourse = async (req, res) => {
             })
             .exec();
 
-        console.log("Fine upto here 3")
+        console.log("Fine upto here 3");
         res.status(200).json({
             success: true,
             message: "Course updated successfully",
