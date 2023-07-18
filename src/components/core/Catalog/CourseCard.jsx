@@ -11,9 +11,6 @@ const CourseCard = ({ course, Height }) => {
         setAvgReviewCount(count);
     }, [course]);
 
-    // console.log("***************************")
-    // console.log(Height)
-    // console.log("***************************")
 
 
     return (
