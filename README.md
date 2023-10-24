@@ -24,4 +24,4 @@ Contributions are welcome! If you have any suggestions or find any issues, pleas
 
 
 ## Deployment
-[Click here](https://skills-point-frontend.vercel.app/) to see my work
+[Click here](https://skills-point-frontend-fezstaei3-rameez0216j.vercel.app/) to see my work
