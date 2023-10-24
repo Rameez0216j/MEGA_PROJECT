@@ -1,6 +1,6 @@
 ## Usage
 
-This start contribution, follow these steps:
+To start contribution, follow these steps:
 
 1. Clone the repository to your local machine.
 1. Install the required packages.
